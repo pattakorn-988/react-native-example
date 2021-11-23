@@ -1,11 +1,18 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, TouchableHighlight, Text } from "react-native";
 
-function ViewImageScreen(props) {
+function ViewImageScreen({ navigation }) {
+  const pressed = () => { console.log('clicked') }
   return (
     <View style={styles.container}>
-      <View style={styles.closeIcon} />
-      <View style={styles.deleteIcon} />
+      <TouchableHighlight style={{position: "absolute"}} onPress={() => {console.log('hello')}}>
+        <View style={styles.closeIcon}>
+          <Text>Close</Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => {console.log('hello')}}>
+        <View style={styles.deleteIcon} />
+      </TouchableHighlight>
 
       <Image
         resizeMode='contain'
@@ -22,7 +29,7 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: '#fc5c65',
     position: "absolute",
-    top: 40,
+    top: 15,
     left: 30
   },
   deleteIcon: {
@@ -30,11 +37,11 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: '#4ecdc4',
     position: "absolute",
-    top: 40,
+    top: 15,
     right: 30
   },
   container: {
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     flex: 1,
   },
   image: {

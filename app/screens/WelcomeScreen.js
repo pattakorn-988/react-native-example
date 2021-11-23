@@ -1,41 +1,62 @@
 import React from "react";
-import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
+import {StyleSheet, View, Image, Text, TouchableHighlight, Button} from "react-native";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
-    <ImageBackground
-      style={styles.background}
-      source={require('../assets/background.jpg')}
+    <View
+      style={styles.container}
     >
       <View style={styles.logoContainer}>
-        <Image source={require('../assets/logo-red.png')} style={styles.logo} />
-        <Text>Sell What You Don't Need</Text>
+        <Text>Voice Recognition and Image Processing Prototype</Text>
       </View>
-      <View style={styles.loginButton} />
-      <View style={styles.registerButton} />
-    </ImageBackground>
+      <TouchableHighlight onPress={() => navigation.navigate('LiveChat') } style={styles.chatButton}>
+        <View style={styles.chatButton}>
+          <Text>Live Chat</Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => navigation.navigate('Voice') } style={styles.voiceButton}>
+        <View style={styles.voiceButton}>
+          <Text>Voice</Text>
+        </View>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => navigation.navigate('Image') } style={styles.imageButton}>
+        <View style={styles.imageButton}>
+          <Text>Image</Text>
+        </View>
+      </TouchableHighlight>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     flex: 1,
+    flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "center",
+    paddingBottom: '30%',
+    paddingHorizontal: '3%'
   },
-  loginButton: {
+  chatButton: {
     width: '100%',
     height: 70,
-    backgroundColor: '#fc5c65'
+    backgroundColor: 'orange',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  registerButton: {
+  voiceButton: {
     width: '100%',
     height: 70,
-    backgroundColor: '#4ecdc4'
+    backgroundColor: '#fc5c65',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  logo: {
-    width: 100,
-    height: 100,
+  imageButton: {
+    width: '100%',
+    height: 70,
+    backgroundColor: '#4ecdc4',
+    justifyContent: "center",
+    alignItems: "center"
   },
   logoContainer: {
     position: 'absolute',
@@ -44,4 +65,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export  default WelcomeScreen;
+export default WelcomeScreen;
